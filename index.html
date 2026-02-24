@@ -38,9 +38,8 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
       min-height: 100vh;
-      padding: 2rem 1.5rem;
+      padding: 3rem 1.5rem 2.5rem;
       position: relative;
       overflow-x: hidden;
     }
@@ -84,25 +83,30 @@
       z-index: 0;
     }
 
-    /* ── Everything above orbs ── */
-    .card,
-    .footer {
+    /* ── Page layout ── */
+    .page-wrap {
       position: relative;
       z-index: 1;
-    }
-
-    /* ── Card ── */
-    .card {
       width: 100%;
-      max-width: 460px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 3.5rem 2.5rem 2.5rem;
+      max-width: 720px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      text-align: center;
+      gap: 1.8rem;
+    }
+
+    .footer {
+      position: relative;
+      z-index: 1;
+      margin-top: 1rem;
+    }
+
+    /* ── Shared panel style ── */
+    .panel {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
       backdrop-filter: blur(28px);
       -webkit-backdrop-filter: blur(28px);
       box-shadow:
@@ -110,6 +114,16 @@
         0 8px 32px rgba(0, 0, 0, 0.5),
         0 40px 100px rgba(0, 0, 0, 0.4),
         inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    }
+
+    /* ── Card ── */
+    .card {
+      max-width: 460px;
+      padding: 3.5rem 2.5rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
 
     /* ── Photo ── */
@@ -123,7 +137,6 @@
       flex-shrink: 0;
     }
 
-    /* glowing ring behind the photo */
     .photo-wrap::before {
       content: '';
       position: absolute;
@@ -162,7 +175,6 @@
       overflow: hidden;
       background: #1a1030;
       position: relative;
-      /* 2px inset border to separate photo from the ring */
       outline: 2px solid var(--bg);
       outline-offset: -2px;
     }
@@ -214,7 +226,7 @@
       opacity: 0.7;
     }
 
-    /* ── Links ── */
+    /* ── Social Links ── */
     .links {
       display: flex;
       gap: 1.2rem;
@@ -277,6 +289,164 @@
       border-bottom-color: rgba(167, 139, 250, 0.35);
     }
 
+    /* ── Demo Reel ── */
+    .reel-section {
+      padding: 2rem 2.5rem;
+    }
+
+    .section-label {
+      font-size: 0.62rem;
+      font-weight: 300;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--accent);
+      opacity: 0.85;
+      margin-bottom: 1.2rem;
+    }
+
+    .reel-embed {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .reel-embed iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    /* Placeholder shown until a Vimeo ID is added */
+    .reel-placeholder {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 12px;
+      border: 1px dashed rgba(167, 139, 250, 0.25);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      color: var(--text-faint);
+    }
+
+    .reel-placeholder i {
+      font-size: 2rem;
+      opacity: 0.4;
+    }
+
+    .reel-placeholder span {
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 300;
+    }
+
+    /* ── About / Education / Experience ── */
+    .content-grid {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.8rem;
+    }
+
+    @media (max-width: 580px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .about-section {
+      padding: 2rem 2.5rem;
+    }
+
+    .about-section p {
+      font-size: 0.88rem;
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--text-muted);
+    }
+
+    .about-section p strong {
+      color: var(--text-primary);
+      font-weight: 400;
+    }
+
+    .sub-section {
+      padding: 2rem 2rem;
+    }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+      margin-top: 0.2rem;
+    }
+
+    .timeline-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .timeline-year {
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      opacity: 0.75;
+      font-weight: 300;
+    }
+
+    .timeline-title {
+      font-size: 0.83rem;
+      font-weight: 400;
+      color: var(--text-primary);
+      line-height: 1.45;
+    }
+
+    .timeline-sub {
+      font-size: 0.75rem;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .timeline-bullets {
+      margin-top: 0.35rem;
+      padding-left: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      list-style: none;
+    }
+
+    .timeline-bullets li {
+      font-size: 0.75rem;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.4;
+      position: relative;
+      padding-left: 0.85rem;
+    }
+
+    .timeline-bullets li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      opacity: 0.5;
+    }
+
+    .timeline-separator {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, var(--border), transparent);
+      margin-top: 0.2rem;
+    }
+
     /* ── Footer ── */
     .footer {
       margin-top: 2.2rem;
@@ -303,50 +473,164 @@
 
   <div class="orb-mid" aria-hidden="true"></div>
 
-  <!-- ── Business Card ── -->
-  <div class="card">
+  <div class="page-wrap">
 
-    <!-- Photo -->
-    <div class="photo-wrap" aria-hidden="true">
-      <div class="photo-inner">
-        <img
-          src="profile.jpg"
-          alt="Emilio Lingg"
-          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-        />
-        <div class="photo-placeholder" style="display:none;">
-          <i class="fa-solid fa-user"></i>
+    <!-- ── Business Card ── -->
+    <div class="card panel">
+
+      <!-- Photo -->
+      <div class="photo-wrap" aria-hidden="true">
+        <div class="photo-inner">
+          <img
+            src="profile.jpg"
+            alt="Emilio Lingg"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          />
+          <div class="photo-placeholder" style="display:none;">
+            <i class="fa-solid fa-user"></i>
+          </div>
         </div>
       </div>
+
+      <!-- Name -->
+      <h1 class="name">Emilio Lingg</h1>
+      <p class="role">VFX Artist &amp; Pipeline TD</p>
+
+      <div class="divider"></div>
+
+      <!-- Social Links -->
+      <nav class="links" aria-label="Social links">
+        <a class="link-item" href="https://www.imdb.com/name/nm16797062/" target="_blank" rel="noopener noreferrer" aria-label="IMDb profile">
+          <i class="fa-brands fa-imdb"></i>
+          <span>IMDb</span>
+        </a>
+        <div class="link-separator" role="separator"></div>
+        <a class="link-item" href="https://www.linkedin.com/in/emilio-lingg/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
+          <i class="fa-brands fa-linkedin"></i>
+          <span>LinkedIn</span>
+        </a>
+        <div class="link-separator" role="separator"></div>
+        <a class="link-item" href="https://www.instagram.com/lingged_in/" target="_blank" rel="noopener noreferrer" aria-label="Instagram profile">
+          <i class="fa-brands fa-instagram"></i>
+          <span>Instagram</span>
+        </a>
+      </nav>
+
+      <!-- Email -->
+      <div class="email-wrap">
+        <a class="email-link" href="mailto:emilio@emiliolingg.com">emilio@emiliolingg.com</a>
+      </div>
+
     </div>
 
-    <!-- Name -->
-    <h1 class="name">Emilio Lingg</h1>
-    <p class="role">VFX Artist &amp; Pipeline TD</p>
+    <!-- ── About Me ── -->
+    <div class="about-section panel">
+      <p class="section-label">About Me</p>
+      <p>
+        Digital Compositor and VFX Artist based in Zürich. I trained in 3D Animation &amp; VFX and have since worked
+        across film and commercial productions. My work centres on Nuke, with a background in Maya and a grounding in
+        software engineering that informs how I approach pipelines and tooling.
+        I'm currently studying Computer Science with a major in AI &amp; Visual Computing —
+        a direction that feels like a natural convergence of everything I've been building towards. With one foot in VFX
+        and the other in computer science, I'm interested in where the two fields meet: AI-driven workflows, generative
+        tools, and the future of visual production.
+      </p>
+    </div>
 
-    <div class="divider"></div>
+    <!-- ── Education & Experience ── -->
+    <div class="content-grid">
 
-    <!-- Social Links -->
-    <nav class="links" aria-label="Social links">
-      <a class="link-item" href="https://www.imdb.com/name/nm16797062/" target="_blank" rel="noopener noreferrer" aria-label="IMDb profile">
-        <i class="fa-brands fa-imdb"></i>
-        <span>IMDb</span>
-      </a>
-      <div class="link-separator" role="separator"></div>
-      <a class="link-item" href="https://www.linkedin.com/in/emilio-lingg/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
-        <i class="fa-brands fa-linkedin"></i>
-        <span>LinkedIn</span>
-      </a>
-      <div class="link-separator" role="separator"></div>
-      <a class="link-item" href="https://www.instagram.com/lingged_in/" target="_blank" rel="noopener noreferrer" aria-label="Instagram profile">
-        <i class="fa-brands fa-instagram"></i>
-        <span>Instagram</span>
-      </a>
-    </nav>
+      <!-- Education -->
+      <div class="sub-section panel">
+        <p class="section-label">Education</p>
+        <div class="timeline">
 
-    <!-- Email -->
-    <div class="email-wrap">
-      <a class="email-link" href="mailto:emilio@emiliolingg.com">emilio@emiliolingg.com</a>
+          <div class="timeline-item">
+            <span class="timeline-year">2025 – Present</span>
+            <span class="timeline-title">BSc Computer Science</span>
+            <span class="timeline-sub">Major in AI &amp; Visual Computing — HSLU</span>
+          </div>
+          <div class="timeline-separator"></div>
+
+          <div class="timeline-item">
+            <span class="timeline-year">2022 – 2023</span>
+            <span class="timeline-title">PIXL VISN Media Arts Academy</span>
+            <span class="timeline-sub">Cologne</span>
+          </div>
+          <div class="timeline-separator"></div>
+
+          <div class="timeline-item">
+            <span class="timeline-year">2021 – 2022</span>
+            <span class="timeline-title">Vocational Baccalaureate School</span>
+            <span class="timeline-sub">Arts Profile — Vaduz, Liechtenstein</span>
+          </div>
+          <div class="timeline-separator"></div>
+
+          <div class="timeline-item">
+            <span class="timeline-year">2016 – 2020</span>
+            <span class="timeline-title">Software Engineer Apprenticeship</span>
+            <span class="timeline-sub">GBS St. Gallen</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Experience -->
+      <div class="sub-section panel">
+        <p class="section-label">Experience</p>
+        <div class="timeline">
+
+          <div class="timeline-item">
+            <span class="timeline-year">Jan 2025 – Present</span>
+            <span class="timeline-title">Junior VFX Artist &amp; Pipeline Developer</span>
+            <span class="timeline-sub">Das alte Lager, Zürich</span>
+          </div>
+          <div class="timeline-separator"></div>
+
+          <div class="timeline-item">
+            <span class="timeline-year">2023 – 2024</span>
+            <span class="timeline-title">Freelance Compositor</span>
+            <ul class="timeline-bullets">
+              <li>Commercial Campaign — NAVADA GmbH, Zürich</li>
+              <li>Honey, Honey — Anna Niebert</li>
+              <li>It Takes Balls — Vincent Dolinsek</li>
+              <li>Spark — Zoi Naum</li>
+              <li>Heartware — Leander Behal</li>
+            </ul>
+          </div>
+          <div class="timeline-separator"></div>
+
+          <div class="timeline-item">
+            <span class="timeline-year">2020 – 2025</span>
+            <span class="timeline-title">INNOFORCE Est.</span>
+            <span class="timeline-sub">Software Development, System Administration</span>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── Demo Reel ── -->
+    <div class="reel-section panel">
+      <p class="section-label">Demo Reel</p>
+
+      <!--
+        To add your Vimeo video, remove the .reel-placeholder block below
+        and uncomment the .reel-embed block, replacing YOUR_VIDEO_ID:
+
+        <div class="reel-embed">
+          <iframe
+            src="https://player.vimeo.com/video/YOUR_VIDEO_ID?color=a78bfa&title=0&byline=0&portrait=0"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+      -->
+      <div class="reel-placeholder" aria-label="Demo reel coming soon">
+        <i class="fa-brands fa-vimeo-v"></i>
+        <span>Demo Reel — Coming Soon</span>
+      </div>
     </div>
 
   </div>
