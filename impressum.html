@@ -3,213 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Impressum — Emilio Lingg</title>
   <meta name="robots" content="noindex, nofollow" />
+  <meta name="description" content="Impressum — Emilio Lingg" />
+  <title>Impressum — Emilio Lingg</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    :root {
-      --bg:           #07060f;
-      --surface:      rgba(255, 255, 255, 0.03);
-      --border:       rgba(167, 139, 250, 0.18);
-      --text-primary: #f3f0ff;
-      --text-muted:   rgba(243, 240, 255, 0.45);
-      --text-faint:   rgba(243, 240, 255, 0.2);
-      --accent:       #a78bfa;
-    }
-
-    body {
-      background-color: var(--bg);
-      color: var(--text-primary);
-      font-family: 'Inter', sans-serif;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 3rem 1.5rem 5rem;
-      position: relative;
-      overflow-x: hidden;
-    }
-
-    /* ── Background glow orbs ── */
-    body::before,
-    body::after {
-      content: '';
-      position: fixed;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    body::before {
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(109, 40, 217, 0.14) 0%, transparent 65%);
-      top: -200px;
-      left: -180px;
-    }
-
-    body::after {
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 65%);
-      bottom: -160px;
-      right: -140px;
-    }
-
-    /* ── Layout ── */
-    .back,
-    .container {
-      position: relative;
-      z-index: 1;
-    }
-
-    /* ── Back link ── */
-    .back {
-      width: 100%;
-      max-width: 560px;
-      margin-bottom: 2.5rem;
-    }
-
-    .back a {
-      font-size: 0.68rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--text-faint);
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-
-    .back a:hover {
-      color: var(--text-muted);
-    }
-
-    .back a::before {
-      content: '← ';
-    }
-
-    /* ── Container ── */
-    .container {
-      width: 100%;
-      max-width: 560px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 3rem 2.5rem;
-      backdrop-filter: blur(28px);
-      -webkit-backdrop-filter: blur(28px);
-      box-shadow:
-        0 0 0 1px rgba(167, 139, 250, 0.05),
-        0 8px 32px rgba(0, 0, 0, 0.5),
-        inset 0 1px 0 rgba(255, 255, 255, 0.05);
-    }
-
-    /* ── Header ── */
-    .page-title {
-      font-family: 'EB Garamond', serif;
-      font-size: 2.4rem;
-      font-weight: 400;
-      letter-spacing: 0.03em;
-      color: var(--text-primary);
-      margin-bottom: 0.35rem;
-    }
-
-    .page-subtitle {
-      font-size: 0.65rem;
-      font-weight: 300;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      color: var(--accent);
-      opacity: 0.8;
-      margin-bottom: 2rem;
-    }
-
-    /* ── Divider ── */
-    .divider {
-      width: 48px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--accent), transparent);
-      margin-bottom: 2.5rem;
-      opacity: 0.7;
-    }
-
-    /* ── Sections ── */
-    .section {
-      margin-bottom: 1.8rem;
-    }
-
-    .section-title {
-      font-size: 0.6rem;
-      font-weight: 400;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      color: var(--accent);
-      opacity: 0.75;
-      margin-bottom: 0.7rem;
-    }
-
-    .section p,
-    .section address {
-      font-size: 0.8rem;
-      font-weight: 300;
-      line-height: 1.9;
-      color: var(--text-muted);
-      font-style: normal;
-    }
-
-    .section a {
-      color: var(--text-muted);
-      text-decoration: underline;
-      text-underline-offset: 3px;
-      transition: color 0.2s ease;
-    }
-
-    .section a:hover {
-      color: var(--text-primary);
-    }
-
-    /* ── Rule ── */
-    hr {
-      border: none;
-      border-top: 1px solid var(--border);
-      margin: 1.8rem 0;
-    }
-
-    /* ── Note ── */
-    .note {
-      font-size: 0.68rem;
-      font-weight: 300;
-      line-height: 1.8;
-      color: var(--text-faint);
-      font-style: italic;
-      margin-top: 2rem;
-      padding-top: 1.8rem;
-      border-top: 1px solid var(--border);
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
+<body class="impressum-page">
 
-  <div class="back">
+  <nav class="impressum-back">
     <a href="index.html">Back</a>
-  </div>
+  </nav>
 
-  <main class="container">
+  <main class="impressum-main">
 
-    <h1 class="page-title">Impressum</h1>
-    <p class="page-subtitle">Legal Disclosure</p>
+    <h1 class="impressum-page-title">Impressum</h1>
+    <p class="impressum-page-subtitle">Legal Disclosure</p>
     <div class="divider"></div>
 
     <!-- Angaben gemäß Art. 5 ECG -->
-    <div class="section">
-      <p class="section-title">Angaben gemäß Art. 5 E-Commerce-Gesetz (ECG), LGBl. 2003 Nr. 117</p>
+    <div class="impressum-section">
+      <p class="impressum-section-title">Angaben gemäß Art. 5 E-Commerce-Gesetz (ECG), LGBl. 2003 Nr. 117</p>
       <address>
         Emilio Lingg<br />
         Essanestrasse 93<br />
@@ -222,16 +38,16 @@
     <hr />
 
     <!-- Verantwortlich für den Inhalt -->
-    <div class="section">
-      <p class="section-title">Verantwortlich für den Inhalt gemäß Art. 6 Mediengesetz (MedienG)</p>
+    <div class="impressum-section">
+      <p class="impressum-section-title">Verantwortlich für den Inhalt gemäß Art. 6 Mediengesetz (MedienG)</p>
       <p>Emilio Lingg, Essanestrasse 93, 9492 Eschen, Liechtenstein</p>
     </div>
 
     <hr />
 
     <!-- Haftungsausschluss -->
-    <div class="section">
-      <p class="section-title">Haftungsausschluss</p>
+    <div class="impressum-section">
+      <p class="impressum-section-title">Haftungsausschluss</p>
       <p>
         Die Inhalte dieser Website wurden mit größter Sorgfalt erstellt.
         Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte
@@ -247,8 +63,8 @@
     <hr />
 
     <!-- Haftung für Links -->
-    <div class="section">
-      <p class="section-title">Haftung für Links</p>
+    <div class="impressum-section">
+      <p class="impressum-section-title">Haftung für Links</p>
       <p>
         Diese Website enthält Links zu externen Websites Dritter, auf deren
         Inhalte ich keinen Einfluss habe. Deshalb kann für diese fremden
@@ -263,8 +79,8 @@
     <hr />
 
     <!-- Urheberrecht -->
-    <div class="section">
-      <p class="section-title">Urheberrecht</p>
+    <div class="impressum-section">
+      <p class="impressum-section-title">Urheberrecht</p>
       <p>
         Die durch den Seitenbetreiber erstellten Inhalte und Werke auf diesen
         Seiten unterliegen dem liechtensteinischen Urheberrechtsgesetz (URG,
@@ -277,8 +93,8 @@
     <hr />
 
     <!-- Datenschutz -->
-    <div class="section">
-      <p class="section-title">Datenschutz</p>
+    <div class="impressum-section">
+      <p class="impressum-section-title">Datenschutz</p>
       <p>
         Diese Website erhebt und speichert keine personenbezogenen Daten.
         Es werden keine Cookies gesetzt und kein Tracking durchgeführt.
@@ -295,7 +111,7 @@
       </p>
     </div>
 
-    <p class="note">
+    <p class="impressum-note">
       Diese Seite ist nicht öffentlich verlinkt und nur über den direkten Link erreichbar.
     </p>
 
