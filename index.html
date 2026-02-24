@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emilio Lingg</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg:           #07060f;
+      --surface:      rgba(255, 255, 255, 0.03);
+      --border:       rgba(167, 139, 250, 0.18);
+      --text-primary: #f3f0ff;
+      --text-muted:   rgba(243, 240, 255, 0.45);
+      --text-faint:   rgba(243, 240, 255, 0.2);
+      --accent:       #a78bfa;
+      --accent-dim:   rgba(139, 92, 246, 0.22);
+      --glow-soft:    rgba(139, 92, 246, 0.12);
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem 1.5rem;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* ── Background glow orbs ── */
+    body::before,
+    body::after {
+      content: '';
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::before {
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(109, 40, 217, 0.18) 0%, transparent 65%);
+      top: -260px;
+      left: -220px;
+    }
+
+    body::after {
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.13) 0%, transparent 65%);
+      bottom: -220px;
+      right: -180px;
+    }
+
+    .orb-mid {
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(76, 29, 149, 0.14) 0%, transparent 65%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Everything above orbs ── */
+    .card,
+    .footer {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── Card ── */
+    .card {
+      width: 100%;
+      max-width: 460px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 3.5rem 2.5rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      box-shadow:
+        0 0 0 1px rgba(167, 139, 250, 0.06),
+        0 8px 32px rgba(0, 0, 0, 0.5),
+        0 40px 100px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    }
+
+    /* ── Photo ── */
+    .photo-wrap {
+      width: 112px;
+      height: 112px;
+      border-radius: 50%;
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 1.8rem;
+      flex-shrink: 0;
+    }
+
+    /* glowing ring behind the photo */
+    .photo-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      background: conic-gradient(
+        from 0deg,
+        #6d28d9,
+        #a78bfa,
+        #c4b5fd,
+        #8b5cf6,
+        #6d28d9
+      );
+      z-index: -1;
+      animation: spin 6s linear infinite;
+    }
+
+    .photo-wrap::after {
+      content: '';
+      position: absolute;
+      inset: -12px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.35) 0%, transparent 70%);
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .photo-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      overflow: hidden;
+      background: #1a1030;
+      position: relative;
+      /* 2px inset border to separate photo from the ring */
+      outline: 2px solid var(--bg);
+      outline-offset: -2px;
+    }
+
+    .photo-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .photo-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(167, 139, 250, 0.25);
+      font-size: 2.8rem;
+    }
+
+    /* ── Name & role ── */
+    .name {
+      font-family: 'EB Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 400;
+      letter-spacing: 0.03em;
+      color: var(--text-primary);
+      line-height: 1.1;
+    }
+
+    .role {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 300;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-top: 0.55rem;
+      opacity: 0.85;
+    }
+
+    /* ── Divider ── */
+    .divider {
+      width: 48px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      margin: 1.8rem auto;
+      opacity: 0.7;
+    }
+
+    /* ── Links ── */
+    .links {
+      display: flex;
+      gap: 1.2rem;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .link-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.45rem;
+      text-decoration: none;
+      color: var(--text-muted);
+      transition: color 0.25s ease, transform 0.25s ease, text-shadow 0.25s ease;
+      padding: 0.5rem 0.6rem;
+    }
+
+    .link-item:hover {
+      color: var(--accent);
+      transform: translateY(-2px);
+      text-shadow: 0 0 18px rgba(167, 139, 250, 0.6);
+    }
+
+    .link-item i {
+      font-size: 1.45rem;
+    }
+
+    .link-item span {
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 400;
+    }
+
+    .link-separator {
+      width: 1px;
+      height: 28px;
+      background: var(--border);
+    }
+
+    /* ── Email ── */
+    .email-wrap {
+      margin-top: 1.6rem;
+    }
+
+    .email-link {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: color 0.25s ease, border-color 0.25s ease;
+    }
+
+    .email-link:hover {
+      color: var(--text-primary);
+      border-bottom-color: rgba(167, 139, 250, 0.35);
+    }
+
+    /* ── Footer ── */
+    .footer {
+      margin-top: 2.2rem;
+      text-align: center;
+    }
+
+    .footer a {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 300;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      text-decoration: none;
+      transition: color 0.25s ease;
+    }
+
+    .footer a:hover {
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="orb-mid" aria-hidden="true"></div>
+
+  <!-- ── Business Card ── -->
+  <div class="card">
+
+    <!-- Photo -->
+    <div class="photo-wrap" aria-hidden="true">
+      <div class="photo-inner">
+        <img
+          src="profile.jpg"
+          alt="Emilio Lingg"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+        />
+        <div class="photo-placeholder" style="display:none;">
+          <i class="fa-solid fa-user"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- Name -->
+    <h1 class="name">Emilio Lingg</h1>
+    <p class="role">VFX Artist &amp; Pipeline TD</p>
+
+    <div class="divider"></div>
+
+    <!-- Social Links -->
+    <nav class="links" aria-label="Social links">
+      <a class="link-item" href="https://www.imdb.com/name/nm16797062/" target="_blank" rel="noopener noreferrer" aria-label="IMDb profile">
+        <i class="fa-brands fa-imdb"></i>
+        <span>IMDb</span>
+      </a>
+      <div class="link-separator" role="separator"></div>
+      <a class="link-item" href="https://www.linkedin.com/in/emilio-lingg/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
+        <i class="fa-brands fa-linkedin"></i>
+        <span>LinkedIn</span>
+      </a>
+      <div class="link-separator" role="separator"></div>
+      <a class="link-item" href="https://www.instagram.com/lingged_in/" target="_blank" rel="noopener noreferrer" aria-label="Instagram profile">
+        <i class="fa-brands fa-instagram"></i>
+        <span>Instagram</span>
+      </a>
+    </nav>
+
+    <!-- Email -->
+    <div class="email-wrap">
+      <a class="email-link" href="mailto:emilio@emiliolingg.com">emilio@emiliolingg.com</a>
+    </div>
+
+  </div>
+
+  <!-- ── Footer ── -->
+  <footer class="footer">
+    <a href="impressum.html">Impressum</a>
+  </footer>
+
+</body>
+</html>

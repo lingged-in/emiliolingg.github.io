@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Impressum — Emilio Lingg</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg:           #07060f;
+      --surface:      rgba(255, 255, 255, 0.03);
+      --border:       rgba(167, 139, 250, 0.18);
+      --text-primary: #f3f0ff;
+      --text-muted:   rgba(243, 240, 255, 0.45);
+      --text-faint:   rgba(243, 240, 255, 0.2);
+      --accent:       #a78bfa;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 3rem 1.5rem 5rem;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* ── Background glow orbs ── */
+    body::before,
+    body::after {
+      content: '';
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::before {
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(109, 40, 217, 0.14) 0%, transparent 65%);
+      top: -200px;
+      left: -180px;
+    }
+
+    body::after {
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 65%);
+      bottom: -160px;
+      right: -140px;
+    }
+
+    /* ── Layout ── */
+    .back,
+    .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── Back link ── */
+    .back {
+      width: 100%;
+      max-width: 560px;
+      margin-bottom: 2.5rem;
+    }
+
+    .back a {
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .back a:hover {
+      color: var(--text-muted);
+    }
+
+    .back a::before {
+      content: '← ';
+    }
+
+    /* ── Container ── */
+    .container {
+      width: 100%;
+      max-width: 560px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 3rem 2.5rem;
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      box-shadow:
+        0 0 0 1px rgba(167, 139, 250, 0.05),
+        0 8px 32px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    }
+
+    /* ── Header ── */
+    .page-title {
+      font-family: 'EB Garamond', serif;
+      font-size: 2.4rem;
+      font-weight: 400;
+      letter-spacing: 0.03em;
+      color: var(--text-primary);
+      margin-bottom: 0.35rem;
+    }
+
+    .page-subtitle {
+      font-size: 0.65rem;
+      font-weight: 300;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--accent);
+      opacity: 0.8;
+      margin-bottom: 2rem;
+    }
+
+    /* ── Divider ── */
+    .divider {
+      width: 48px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      margin-bottom: 2.5rem;
+      opacity: 0.7;
+    }
+
+    /* ── Sections ── */
+    .section {
+      margin-bottom: 1.8rem;
+    }
+
+    .section-title {
+      font-size: 0.6rem;
+      font-weight: 400;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--accent);
+      opacity: 0.75;
+      margin-bottom: 0.7rem;
+    }
+
+    .section p,
+    .section address {
+      font-size: 0.8rem;
+      font-weight: 300;
+      line-height: 1.9;
+      color: var(--text-muted);
+      font-style: normal;
+    }
+
+    .section a {
+      color: var(--text-muted);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 0.2s ease;
+    }
+
+    .section a:hover {
+      color: var(--text-primary);
+    }
+
+    /* ── Rule ── */
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 1.8rem 0;
+    }
+
+    /* ── Note ── */
+    .note {
+      font-size: 0.68rem;
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--text-faint);
+      font-style: italic;
+      margin-top: 2rem;
+      padding-top: 1.8rem;
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="back">
+    <a href="index.html">Back</a>
+  </div>
+
+  <main class="container">
+
+    <h1 class="page-title">Impressum</h1>
+    <p class="page-subtitle">Legal Disclosure</p>
+    <div class="divider"></div>
+
+    <!-- Angaben gemäß Art. 5 ECG -->
+    <div class="section">
+      <p class="section-title">Angaben gemäß Art. 5 E-Commerce-Gesetz (ECG), LGBl. 2003 Nr. 117</p>
+      <address>
+        Emilio Lingg<br />
+        Essanestrasse 93<br />
+        9492 Eschen<br />
+        Liechtenstein<br />
+        E-Mail: <a href="mailto:emilio@emiliolingg.com">emilio@emiliolingg.com</a>
+      </address>
+    </div>
+
+    <hr />
+
+    <!-- Verantwortlich für den Inhalt -->
+    <div class="section">
+      <p class="section-title">Verantwortlich für den Inhalt gemäß Art. 6 Mediengesetz (MedienG)</p>
+      <p>Emilio Lingg, Essanestrasse 93, 9492 Eschen, Liechtenstein</p>
+    </div>
+
+    <hr />
+
+    <!-- Haftungsausschluss -->
+    <div class="section">
+      <p class="section-title">Haftungsausschluss</p>
+      <p>
+        Die Inhalte dieser Website wurden mit größter Sorgfalt erstellt.
+        Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte
+        kann jedoch keine Gewähr übernommen werden. Als Diensteanbieter
+        bin ich gemäß Art. 9 ECG für eigene Inhalte auf diesen Seiten
+        nach den allgemeinen Gesetzen verantwortlich. Nach Art. 11–13 ECG
+        bin ich als Diensteanbieter jedoch nicht verpflichtet, übermittelte
+        oder gespeicherte fremde Informationen zu überwachen oder nach Umständen
+        zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
+      </p>
+    </div>
+
+    <hr />
+
+    <!-- Haftung für Links -->
+    <div class="section">
+      <p class="section-title">Haftung für Links</p>
+      <p>
+        Diese Website enthält Links zu externen Websites Dritter, auf deren
+        Inhalte ich keinen Einfluss habe. Deshalb kann für diese fremden
+        Inhalte keine Gewähr übernommen werden. Für die Inhalte der verlinkten
+        Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten
+        verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung
+        auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren
+        zum Zeitpunkt der Verlinkung nicht erkennbar.
+      </p>
+    </div>
+
+    <hr />
+
+    <!-- Urheberrecht -->
+    <div class="section">
+      <p class="section-title">Urheberrecht</p>
+      <p>
+        Die durch den Seitenbetreiber erstellten Inhalte und Werke auf diesen
+        Seiten unterliegen dem liechtensteinischen Urheberrechtsgesetz (URG,
+        LGBl. 1999 Nr. 160). Die Vervielfältigung, Bearbeitung, Verbreitung
+        und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes
+        bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
+      </p>
+    </div>
+
+    <hr />
+
+    <!-- Datenschutz -->
+    <div class="section">
+      <p class="section-title">Datenschutz</p>
+      <p>
+        Diese Website erhebt und speichert keine personenbezogenen Daten.
+        Es werden keine Cookies gesetzt und kein Tracking durchgeführt.
+        Beim Aufruf dieser Website werden durch den Hosting-Anbieter
+        (GitHub Pages) technisch notwendige Verbindungsdaten (z.&nbsp;B.
+        IP-Adresse) protokolliert. Der Betrieb dieser Website erfolgt im Einklang
+        mit dem liechtensteinischen Datenschutzgesetz (DSG, LGBl. 2018 Nr. 157)
+        sowie der im EWR anwendbaren Datenschutz-Grundverordnung (DSGVO).
+        Weitere Informationen zum Datenschutz des Hosting-Anbieters finden Sie
+        unter:
+        <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer">
+          GitHub Privacy Statement
+        </a>.
+      </p>
+    </div>
+
+    <p class="note">
+      Diese Seite ist nicht öffentlich verlinkt und nur über den direkten Link erreichbar.
+    </p>
+
+  </main>
+
+</body>
+</html>
