@@ -28,6 +28,10 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 html, body {
   height: 100%;
 }
@@ -935,6 +939,54 @@ body.post-page {
   aspect-ratio: 16 / 9;
   object-fit: cover;
   opacity: 0.92;
+}
+
+/* ── Table of Contents ── */
+
+.post-toc {
+  margin-bottom: 2.5rem;
+  padding: 1.1rem 1.4rem;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.post-toc-title {
+  font-size: 0.6rem;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 0.65rem;
+}
+
+.post-toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.post-toc-item.post-toc-h0 { padding-left: 0; }
+.post-toc-item.post-toc-h1 { padding-left: 1rem; }
+.post-toc-item.post-toc-h2 { padding-left: 2rem; }
+
+.post-toc-link {
+  display: block;
+  padding: 0.15rem 0;
+  font-size: 0.82rem;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.post-toc-link:hover,
+.post-toc-link.is-active {
+  color: var(--accent);
 }
 
 /* ── Post Prose — Typography ── */
