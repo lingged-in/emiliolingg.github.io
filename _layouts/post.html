@@ -18,45 +18,51 @@
     <a href="/blog/">Blog</a>
   </nav>
 
-  <article class="post-main">
+  <div class="post-layout">
 
-    <header class="post-header">
-      <p class="section-label">{{ page.category | default: "Notes" }}</p>
-      <h1 class="post-title">{{ page.title }}</h1>
-      <p class="post-meta">
-        <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
-        {% if page.tags and page.tags.size > 0 %}
-        <span class="post-meta-sep">·</span>
-        <span class="post-tags">
-          {% for tag in page.tags %}<span class="post-tag">{{ tag }}</span>{% unless forloop.last %} {% endunless %}{% endfor %}
-        </span>
-        {% endif %}
-      </p>
-      {% if page.thumbnail %}
-      <div class="post-hero">
-        <img class="post-hero-img" src="{{ page.thumbnail }}" alt="{{ page.title }}" />
-      </div>
-      {% endif %}
-      <div class="divider"></div>
-    </header>
-
-    <nav class="post-toc" id="post-toc" aria-label="Table of contents">
-      <p class="post-toc-title">Contents</p>
-      <ol class="post-toc-list"></ol>
-    </nav>
-
-    <div class="post-prose">
-      {{ content }}
-    </div>
-
-    <footer class="post-footer">
-      <div class="divider"></div>
-      <nav class="post-footer-nav">
-        <a href="/blog/">← Back to Blog</a>
+    <aside class="post-toc-wrap">
+      <nav class="post-toc" id="post-toc" aria-label="Table of contents">
+        <p class="post-toc-title">Contents</p>
+        <ol class="post-toc-list"></ol>
       </nav>
-    </footer>
+    </aside>
 
-  </article>
+    <article class="post-main">
+
+      <header class="post-header">
+        <p class="section-label">{{ page.category | default: "Notes" }}</p>
+        <h1 class="post-title">{{ page.title }}</h1>
+        <p class="post-meta">
+          <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
+          {% if page.tags and page.tags.size > 0 %}
+          <span class="post-meta-sep">·</span>
+          <span class="post-tags">
+            {% for tag in page.tags %}<span class="post-tag">{{ tag }}</span>{% unless forloop.last %} {% endunless %}{% endfor %}
+          </span>
+          {% endif %}
+        </p>
+        {% if page.thumbnail %}
+        <div class="post-hero">
+          <img class="post-hero-img" src="{{ page.thumbnail }}" alt="{{ page.title }}" />
+        </div>
+        {% endif %}
+        <div class="divider"></div>
+      </header>
+
+      <div class="post-prose">
+        {{ content }}
+      </div>
+
+      <footer class="post-footer">
+        <div class="divider"></div>
+        <nav class="post-footer-nav">
+          <a href="/blog/">← Back to Blog</a>
+        </nav>
+      </footer>
+
+    </article>
+
+  </div>
 
   <footer class="footer">
     <a href="/impressum.html">Impressum</a>
@@ -91,19 +97,29 @@
         list.appendChild(li);
       });
 
-      if ('IntersectionObserver' in window) {
-        var links = list.querySelectorAll('.post-toc-link');
-        var obs = new IntersectionObserver(function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              links.forEach(function (l) { l.classList.remove('is-active'); });
-              var active = list.querySelector('a[href="#' + entry.target.id + '"]');
-              if (active) active.classList.add('is-active');
-            }
-          });
-        }, { rootMargin: '-5% 0% -85% 0%' });
-        headings.forEach(function (h) { obs.observe(h); });
+      var links = list.querySelectorAll('.post-toc-link');
+
+      function setActive(id) {
+        links.forEach(function (l) { l.classList.remove('is-active'); });
+        var active = list.querySelector('a[href="#' + id + '"]');
+        if (active) active.classList.add('is-active');
       }
+
+      function updateActive() {
+        var threshold = window.innerHeight * 0.25;
+        var current = headings[0];
+        for (var i = 0; i < headings.length; i++) {
+          if (headings[i].getBoundingClientRect().top <= threshold) {
+            current = headings[i];
+          } else {
+            break;
+          }
+        }
+        if (current) setActive(current.id);
+      }
+
+      window.addEventListener('scroll', updateActive, { passive: true });
+      updateActive();
     }());
   </script>
 </body>
