@@ -32,6 +32,11 @@
         </span>
         {% endif %}
       </p>
+      {% if page.thumbnail %}
+      <div class="post-hero">
+        <img class="post-hero-img" src="{{ page.thumbnail }}" alt="{{ page.title }}" />
+      </div>
+      {% endif %}
       <div class="divider"></div>
     </header>
 

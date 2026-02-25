@@ -653,7 +653,7 @@ body::after {
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: 720px;
+  max-width: min(75vw, 1100px);
   margin-bottom: 2.5rem;
 }
 
@@ -698,6 +698,11 @@ body::after {
   line-height: 1.7;
   color: var(--text-muted);
   margin-top: 0.4rem;
+}
+
+/* Blog listing page is wider than the default 720px card layout */
+.blog-listing-wrap {
+  max-width: min(75vw, 1100px);
 }
 
 /* ── Post List ── */
@@ -814,6 +819,22 @@ body::after {
   transform: translateX(3px);
 }
 
+/* ── Card Thumbnail ── */
+
+.blog-post-card-thumb {
+  width: 130px;
+  height: 86px;
+  object-fit: cover;
+  border-radius: 10px;
+  flex-shrink: 0;
+  opacity: 0.88;
+  transition: opacity 0.2s ease;
+}
+
+.blog-post-card:hover .blog-post-card-thumb {
+  opacity: 1;
+}
+
 /* ── Empty State ── */
 
 .blog-empty {
@@ -839,12 +860,12 @@ body.post-page {
   padding-bottom: 5rem;
 }
 
-/* Main article container — matches impressum-main width and glass style */
+/* Main article container */
 .post-main {
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: 720px;
+  max-width: min(75vw, 1100px);
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 20px;
@@ -899,6 +920,21 @@ body.post-page {
 .post-header .divider {
   margin-top: 0;
   margin-bottom: 0;
+}
+
+/* ── Post Hero Image ── */
+
+.post-hero {
+  margin: 1.8rem 0 0;
+}
+
+.post-hero-img {
+  width: 100%;
+  display: block;
+  border-radius: 12px;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  opacity: 0.92;
 }
 
 /* ── Post Prose — Typography ── */
@@ -1036,6 +1072,29 @@ body.post-page {
 
 .post-prose blockquote p {
   margin-bottom: 0;
+}
+
+/* ── Images ── */
+
+.post-prose img {
+  width: 100%;
+  display: block;
+  border-radius: 10px;
+  margin: 1.8em 0;
+  object-fit: cover;
+}
+
+.post-prose figure {
+  margin: 2em 0;
+}
+
+.post-prose figcaption {
+  font-size: 0.72rem;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  color: var(--text-faint);
+  text-align: center;
+  margin-top: 0.6rem;
 }
 
 /* ── Horizontal Rule ── */
@@ -1177,6 +1236,25 @@ body.post-page {
 /* =============================================================================
    22. Blog — Responsive
    ============================================================================= */
+
+/* On smaller screens, drop the wide min(75vw) so the blog fills available space */
+@media (max-width: 900px) {
+  .blog-listing-wrap,
+  .blog-back,
+  .post-main {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 700px) {
+  .blog-post-card-thumb {
+    display: none;
+  }
+
+  .post-hero-img {
+    border-radius: 8px;
+  }
+}
 
 @media (max-width: 580px) {
   .post-title {

@@ -5,6 +5,7 @@ date: 2026-02-25
 category: Pipeline
 tags: [Nuke, Python, Pipeline]
 description: "A walkthrough of building a production-ready gizmo manager panel for Foundry Nuke, covering custom PySide2 widgets, gizmo discovery, and versioning."
+thumbnail: "https://picsum.photos/seed/nukegizmo/1200/675"
 ---
 
 Writing pipeline tools for Nuke sits in an interesting space — you're writing software for artists who need it to be invisible when it works and obvious when it doesn't. This post walks through a gizmo manager I built to handle cross-project gizmo discovery, versioning, and one-click installation for a small studio pipeline.
@@ -20,6 +21,8 @@ The requirements for this one were:
 - Display version metadata from a sidecar `version.txt`
 - Let artists install a gizmo into the current session with one click
 - No external dependencies beyond what ships with Nuke
+
+![A compositor's node graph in Foundry Nuke — the environment the gizmo manager lives inside.](https://picsum.photos/seed/nuke-graph/1200/500)
 
 ## Project Structure
 
@@ -124,6 +127,8 @@ def install_gizmo(entry: GizmoEntry) -> None:
 ```
 
 The `replace("\\", "/")` is not optional on Windows — Nuke's file path handling is inconsistent with backslashes even in recent versions.
+
+![The finished gizmo manager panel docked inside Nuke's pane layout, showing the tree view with categories expanded.](https://picsum.photos/seed/pyside-panel/1200/500)
 
 ## Panel UI
 
