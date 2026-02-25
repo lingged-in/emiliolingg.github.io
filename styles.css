@@ -644,3 +644,570 @@ body::after {
     grid-template-columns: 1fr;
   }
 }
+
+/* =============================================================================
+   18. Blog — Back Navigation
+   ============================================================================= */
+
+.blog-back {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 720px;
+  margin-bottom: 2.5rem;
+}
+
+.blog-back a {
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.blog-back a::before {
+  content: '← ';
+}
+
+.blog-back a:hover {
+  color: var(--text-muted);
+}
+
+/* =============================================================================
+   19. Blog — Listing Page
+   ============================================================================= */
+
+.blog-listing-header {
+  padding: 2.5rem 2.5rem 2rem;
+}
+
+.blog-listing-title {
+  font-family: 'EB Garamond', serif;
+  font-size: 2.4rem;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  color: var(--text-primary);
+  line-height: 1.1;
+  margin-bottom: 0.6rem;
+}
+
+.blog-listing-subtitle {
+  font-size: 0.82rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--text-muted);
+  margin-top: 0.4rem;
+}
+
+/* ── Post List ── */
+
+.blog-post-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.blog-post-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.6rem 2rem;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  gap: 1rem;
+}
+
+.blog-post-card:hover {
+  border-color: rgba(167, 139, 250, 0.35);
+  box-shadow:
+    0 0 0 1px rgba(167, 139, 250, 0.12),
+    0 8px 32px rgba(0, 0, 0, 0.5),
+    0 40px 100px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transform: translateY(-1px);
+}
+
+.blog-post-card-inner {
+  flex: 1;
+  min-width: 0;
+}
+
+.blog-post-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.55rem;
+}
+
+.blog-post-date {
+  font-size: 0.62rem;
+  font-weight: 300;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.blog-post-category {
+  font-size: 0.62rem;
+  font-weight: 300;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: 0.75;
+}
+
+.post-meta-sep {
+  color: var(--text-faint);
+  font-size: 0.7rem;
+}
+
+.blog-post-title {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.35rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--text-primary);
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+}
+
+.blog-post-excerpt {
+  font-size: 0.82rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.blog-post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.5rem;
+}
+
+.post-tag {
+  font-size: 0.58rem;
+  font-weight: 300;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(167, 139, 250, 0.08);
+  border: 1px solid rgba(167, 139, 250, 0.18);
+  border-radius: 4px;
+  padding: 0.2rem 0.5rem;
+  opacity: 0.85;
+}
+
+.blog-post-arrow {
+  font-size: 1.1rem;
+  color: var(--text-faint);
+  flex-shrink: 0;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.blog-post-card:hover .blog-post-arrow {
+  color: var(--accent);
+  transform: translateX(3px);
+}
+
+/* ── Empty State ── */
+
+.blog-empty {
+  padding: 3rem 2.5rem;
+  text-align: center;
+}
+
+.blog-empty .section-label {
+  margin-bottom: 0.6rem;
+}
+
+.blog-empty-text {
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--text-muted);
+}
+
+/* =============================================================================
+   20. Blog — Post Page
+   ============================================================================= */
+
+body.post-page {
+  padding-bottom: 5rem;
+}
+
+/* Main article container — matches impressum-main width and glass style */
+.post-main {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 720px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 3rem 2.5rem;
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  box-shadow:
+    0 0 0 1px rgba(167, 139, 250, 0.06),
+    0 8px 32px rgba(0, 0, 0, 0.5),
+    0 40px 100px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* ── Post Header ── */
+
+.post-header {
+  margin-bottom: 2rem;
+}
+
+.post-header .section-label {
+  margin-bottom: 0.75rem;
+}
+
+.post-title {
+  font-family: 'EB Garamond', serif;
+  font-size: 2.4rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--text-primary);
+  line-height: 1.15;
+  margin-bottom: 0.75rem;
+}
+
+.post-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.65rem;
+  font-weight: 300;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 1.8rem;
+}
+
+.post-tags {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.post-header .divider {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* ── Post Prose — Typography ── */
+
+.post-prose {
+  font-size: 0.92rem;
+  font-weight: 300;
+  line-height: 1.9;
+  color: var(--text-muted);
+}
+
+.post-prose p {
+  margin-bottom: 1.4em;
+}
+
+.post-prose p:last-child {
+  margin-bottom: 0;
+}
+
+.post-prose h2 {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.55rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--text-primary);
+  line-height: 1.25;
+  margin-top: 2.5em;
+  margin-bottom: 0.8em;
+}
+
+.post-prose h3 {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.22rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--text-primary);
+  line-height: 1.3;
+  margin-top: 2em;
+  margin-bottom: 0.6em;
+}
+
+.post-prose h4 {
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: 0.85;
+  margin-top: 1.8em;
+  margin-bottom: 0.6em;
+}
+
+.post-prose strong {
+  color: var(--text-primary);
+  font-weight: 400;
+}
+
+.post-prose em {
+  font-style: italic;
+  color: rgba(243, 240, 255, 0.6);
+}
+
+.post-prose a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(167, 139, 250, 0.35);
+  transition: text-decoration-color 0.2s ease, color 0.2s ease;
+}
+
+.post-prose a:hover {
+  color: var(--text-primary);
+  text-decoration-color: rgba(167, 139, 250, 0.7);
+}
+
+/* ── Lists ── */
+
+.post-prose ul,
+.post-prose ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1.4em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em;
+}
+
+.post-prose ul {
+  list-style: none;
+  padding-left: 1rem;
+}
+
+.post-prose ul li {
+  position: relative;
+  padding-left: 1rem;
+}
+
+.post-prose ul li::before {
+  content: '–';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  opacity: 0.5;
+}
+
+.post-prose ol {
+  list-style: decimal;
+}
+
+.post-prose ol li::marker {
+  color: var(--accent);
+  opacity: 0.6;
+}
+
+/* ── Inline Code ── */
+
+.post-prose code {
+  font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+  font-size: 0.82em;
+  background: rgba(167, 139, 250, 0.08);
+  border: 1px solid rgba(167, 139, 250, 0.14);
+  border-radius: 4px;
+  padding: 0.12em 0.4em;
+  color: var(--accent);
+}
+
+/* ── Blockquote ── */
+
+.post-prose blockquote {
+  border-left: 2px solid rgba(167, 139, 250, 0.35);
+  padding: 0.6rem 0 0.6rem 1.4rem;
+  margin: 1.6em 0;
+  color: rgba(243, 240, 255, 0.5);
+  font-style: italic;
+}
+
+.post-prose blockquote p {
+  margin-bottom: 0;
+}
+
+/* ── Horizontal Rule ── */
+
+.post-prose hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2.5em 0;
+}
+
+/* ── Post Footer ── */
+
+.post-footer {
+  margin-top: 2.5rem;
+}
+
+.post-footer .divider {
+  margin-top: 0;
+  margin-bottom: 1.8rem;
+}
+
+.post-footer-nav a {
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.post-footer-nav a:hover {
+  color: var(--text-muted);
+}
+
+/* =============================================================================
+   21. Syntax Highlighting — Rouge / Kramdown
+   ============================================================================= */
+
+/*
+   Rouge wraps highlighted blocks in:
+     <div class="highlight"><pre class="highlight"><code>...</code></pre></div>
+   Inside .post-prose, we target .highlight to override the inline code
+   styles defined above and apply the full code block treatment.
+*/
+
+.post-prose .highlight {
+  margin: 1.6em 0;
+  border-radius: 12px;
+  border: 1px solid rgba(167, 139, 250, 0.12);
+  background: rgba(7, 6, 15, 0.85);
+  overflow: hidden;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.03),
+    0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+.post-prose .highlight pre {
+  margin: 0;
+  padding: 1.4rem 1.6rem;
+  overflow-x: auto;
+  background: transparent;
+  border: none;
+}
+
+.post-prose .highlight code {
+  font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+  font-size: 0.8rem;
+  line-height: 1.7;
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: rgba(243, 240, 255, 0.75);
+  border-radius: 0;
+}
+
+/* ── Rouge Token Colors — Dark Purple Theme ── */
+
+.highlight .p  { color: rgba(243, 240, 255, 0.6); }
+.highlight .w  { color: transparent; }
+
+.highlight .c,
+.highlight .c1,
+.highlight .cm,
+.highlight .cp,
+.highlight .cs { color: rgba(167, 139, 250, 0.35); font-style: italic; }
+
+.highlight .k,
+.highlight .kd,
+.highlight .kn,
+.highlight .kp,
+.highlight .kr,
+.highlight .kt { color: #c4b5fd; font-weight: 400; }
+
+.highlight .s,
+.highlight .s1,
+.highlight .s2,
+.highlight .sb,
+.highlight .sc,
+.highlight .sd,
+.highlight .se,
+.highlight .sh,
+.highlight .sx { color: #86efac; }
+
+.highlight .si { color: #6ee7b7; }
+
+.highlight .m,
+.highlight .mb,
+.highlight .mf,
+.highlight .mh,
+.highlight .mi,
+.highlight .mo { color: #fbbf24; }
+
+.highlight .o,
+.highlight .ow { color: #a78bfa; }
+
+.highlight .nb { color: #93c5fd; }
+.highlight .nc { color: #e879f9; }
+.highlight .nd { color: #a78bfa; }
+.highlight .ne { color: #f87171; }
+.highlight .nf,
+.highlight .fm { color: #7dd3fc; }
+.highlight .nn { color: rgba(243, 240, 255, 0.75); }
+.highlight .nv,
+.highlight .vc,
+.highlight .vg,
+.highlight .vi { color: rgba(243, 240, 255, 0.65); }
+
+.highlight .l,
+.highlight .ld { color: #86efac; }
+
+.highlight .kc { color: #fb923c; }
+
+.highlight .err { color: #f87171; background: rgba(248, 113, 113, 0.08); }
+
+.highlight .gd { color: #f87171; background: rgba(248, 113, 113, 0.08); }
+.highlight .gi { color: #86efac; background: rgba(134, 239, 172, 0.08); }
+.highlight .go { color: rgba(243, 240, 255, 0.4); }
+
+/* =============================================================================
+   22. Blog — Responsive
+   ============================================================================= */
+
+@media (max-width: 580px) {
+  .post-title {
+    font-size: 1.9rem;
+  }
+
+  .post-main {
+    padding: 2rem 1.5rem;
+  }
+
+  .blog-listing-header {
+    padding: 2rem 1.5rem 1.5rem;
+  }
+
+  .blog-post-card {
+    padding: 1.4rem 1.5rem;
+  }
+
+  .blog-post-title {
+    font-size: 1.15rem;
+  }
+
+  .blog-post-arrow {
+    display: none;
+  }
+
+  .post-prose .highlight pre {
+    padding: 1rem 1.2rem;
+  }
+
+  .post-prose .highlight code {
+    font-size: 0.74rem;
+  }
+}

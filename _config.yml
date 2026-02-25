@@ -1,1 +1,7 @@
 title: Emilio Lingg
+permalink: /blog/:title/
+highlighter: rouge
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
