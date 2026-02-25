@@ -52,6 +52,9 @@ title: Blog — Emilio Lingg
           </div>
           {% endif %}
         </div>
+        {% if post.thumbnail %}
+        <img class="blog-post-card-thumb" src="{{ post.thumbnail }}" alt="{{ post.title }}" />
+        {% endif %}
         <span class="blog-post-arrow" aria-hidden="true">→</span>
       </a>
       {% endfor %}
