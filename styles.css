@@ -657,7 +657,7 @@ body::after {
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: min(75vw, 1100px);
+  max-width: min(90vw, 1360px);
   margin-bottom: 2.5rem;
 }
 
@@ -864,12 +864,36 @@ body.post-page {
   padding-bottom: 5rem;
 }
 
-/* Main article container */
-.post-main {
+/* Post page layout: sidebar TOC + article side by side */
+.post-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  width: 100%;
+  max-width: min(90vw, 1360px);
   position: relative;
   z-index: 1;
-  width: 100%;
-  max-width: min(75vw, 1100px);
+}
+
+/* Sticky TOC sidebar */
+.post-toc-wrap {
+  width: 220px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 3rem;
+  max-height: calc(100vh - 6rem);
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.post-toc-wrap::-webkit-scrollbar {
+  display: none;
+}
+
+/* Main article container */
+.post-main {
+  flex: 1;
+  min-width: 0;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 20px;
@@ -944,7 +968,6 @@ body.post-page {
 /* ── Table of Contents ── */
 
 .post-toc {
-  margin-bottom: 2.5rem;
   padding: 1.1rem 1.4rem;
   background: rgba(255, 255, 255, 0.025);
   border: 1px solid var(--border);
@@ -975,18 +998,24 @@ body.post-page {
 
 .post-toc-link {
   display: block;
-  padding: 0.15rem 0;
-  font-size: 0.82rem;
+  padding: 0.15rem 0.4rem;
+  font-size: 0.75rem;
   font-weight: 300;
   line-height: 1.5;
   color: var(--text-muted);
   text-decoration: none;
-  transition: color 0.15s;
+  border-left: 2px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
 }
 
-.post-toc-link:hover,
+.post-toc-link:hover {
+  color: var(--text-primary);
+  border-left-color: var(--border);
+}
+
 .post-toc-link.is-active {
   color: var(--accent);
+  border-left-color: var(--accent);
 }
 
 /* ── Post Prose — Typography ── */
@@ -1289,11 +1318,28 @@ body.post-page {
    22. Blog — Responsive
    ============================================================================= */
 
+/* On smaller screens, collapse the sidebar TOC into a top block above the article */
+@media (max-width: 1100px) {
+  .post-layout {
+    flex-direction: column;
+    max-width: 100%;
+  }
+
+  .post-toc-wrap {
+    width: 100%;
+    position: static;
+    max-height: none;
+  }
+
+  .post-toc {
+    margin-bottom: 0;
+  }
+}
+
 /* On smaller screens, drop the wide min(75vw) so the blog fills available space */
 @media (max-width: 900px) {
   .blog-listing-wrap,
-  .blog-back,
-  .post-main {
+  .blog-back {
     max-width: 100%;
   }
 }
@@ -1309,6 +1355,10 @@ body.post-page {
 }
 
 @media (max-width: 580px) {
+  .post-toc-wrap {
+    display: none;
+  }
+
   .post-title {
     font-size: 1.9rem;
   }
